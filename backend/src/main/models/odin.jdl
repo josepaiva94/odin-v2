@@ -1,0 +1,707 @@
+/**
+ * Model definitions of Odin
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/
+ */
+
+
+/**
+ * Representation of a Player
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/players
+ */
+entity Player {
+    playerId String,
+	displayName String,
+    avatarImageUrl String,
+    bannerUrlPortrait String,
+    bannerUrlLandscape String,
+    originalPlayerId String,
+    familyName String,
+    givenName String,
+    title String,
+    profileVisible Boolean
+}
+
+/**
+ * Experience information of a player
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/players
+ */
+entity ExperienceInfo {
+	currentExperiencePoints Long,
+	lastLevelUpTimestamp Long
+}
+
+/**
+ * Level informmation
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/players
+ */
+entity Level {
+	level Integer,
+	minExperiencePoints Long,
+	maxExperiencePoints Long
+}
+
+/**
+ * Definition of an achievement
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/achievementDefinitions
+ */
+entity AchievementDefinition {
+    name String,
+    description String,
+    achievementType AchievementType,
+    totalSteps Integer,
+    revealedIconUrl String,
+    isRevealedIconUrlDefault Boolean,
+    unlockedIconUrl String,
+    isUnlockedIconUrlDefault Boolean,
+    initialState String,
+    experiencePoints Long
+}
+
+/**
+ * Player progress to an Achievement
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/achievements
+ */
+entity Achievement {
+    currentSteps Integer,
+    achievementState AchievementState,
+    lastUpdatedTimestamp Long,
+    experiencePoints Long
+}
+
+/**
+ * Representation of the metadata for an application
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/applications
+ */
+entity Application {
+    name String,
+    author String,
+    description String,
+   	lastUpdated ZonedDateTime,
+   	achievementCount Integer,
+   	leaderboardCount Integer,
+   	enabledFeatures String,
+   	themeColor String
+}
+
+/**
+ * Category of an application
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/applications
+ */
+entity ApplicationCategory {
+	primary String,
+	secondary String
+}
+
+/**
+ * Assets of an application
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/applications
+ */
+entity ImageAsset {
+	name String,
+	width Integer,
+	height Integer,
+	mime_type String,
+	url String
+}
+
+/**
+ * Representation of an Instance of an application
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/applications
+ */
+entity ApplicationInstance {
+	platformType String,
+	name String,
+	turnBasedPlay Boolean,
+	realtimePlay Boolean,
+	acquisitionUri String
+}
+
+/**
+ * Android-specific properties of an Instance of an application
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/applications
+ */
+entity ApplicationAndroidInstance {
+	packageName String,
+	enablePiracyCheck Boolean,
+	preferred Boolean
+}
+
+/**
+ * iOS-specific properties of an Instance of an application
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/applications
+ */
+entity ApplicationIosInstance {
+	supportIphone Boolean,
+    supportIpad Boolean,
+    bundleIdentifier String,
+    itunesAppId String,
+    preferredForIphone Boolean,
+    preferredForIpad Boolean
+}
+
+/**
+ * Web-specific properties of an Instance of an application
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/applications
+ */
+entity ApplicationWebInstance {
+    launchUrl String,
+    preferred Boolean
+}
+
+/**
+ * Representation of an Event
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/events
+ */
+entity Event {
+    displayName String,
+    description String,
+    imageUrl String,
+    isImageUrlDefault Boolean,
+    visibility EventVisibility
+}
+
+/**
+ * Representation of a Leaderboard
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/leaderboards
+ */
+entity Leaderboard {
+    name String,
+    iconUrl String,
+    isIconUrlDefault Boolean,
+    order LeaderboardOrder
+}
+
+/**
+ * Representation of game profile data
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/metagame
+ */
+entity Metagame {
+    currentVersion Integer
+}
+
+/**
+ * Representation of push tokens for iOS devices
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/pushtokens
+ */
+entity PushToken {
+    idIosApnsDeviceToken Blob,
+    idIosApnsEnvironment PushTokenEnvironmment,
+    language String,
+    clientRevision String
+}
+
+/**
+ * Representation of a Quest
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/quests
+ */
+entity Quest {
+    name String,
+    description String,
+    iconUrl String,
+    isDefaultIconUrl Boolean,
+    bannerUrl String,
+    isBannerUrlDefault Boolean,
+    startTime ZonedDateTime,
+    endTime ZonedDateTime,
+   	acceptedTime ZonedDateTime,
+    lastUpdatedTime ZonedDateTime,
+    notifyTime ZonedDateTime,
+    state QuestState
+}
+
+/**
+ * Representation of a Quest Milestone
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/quests
+ */
+entity QuestMilestone {
+	completionRewardData Blob,
+	state String
+}
+
+/**
+ * Representation of a Quest Criterion
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/quests
+ */
+entity QuestCriterion {
+	completionContribution Long,
+	currentContribution Long,
+	initialPlayerProgress Long
+}
+
+
+/** 
+ * Representation of the state of a Room with multiple players
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/rooms
+ */
+entity Room {
+	variant Integer,
+	status String,
+	inviterId String,
+	creationParticipantId String,
+	creationModifiedTime ZonedDateTime,
+	lastUpdateParticipantId String,
+	lastUpdateModifiedTime ZonedDateTime,
+	description String,
+	roomStatusVersion Integer
+}
+
+/**
+ * Criteria for auto-matching players into a Room
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/rooms
+ */
+entity RoomAutoMatchingCriteria {
+	minAutoMatchingPlayers Integer,
+    maxAutoMatchingPlayers Integer,
+    exclusiveBitmask Long
+}
+
+/**
+ * Auto-matching status of a Room (NULL if the room is not currently in the auto-matching queue)
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/rooms
+ */
+entity RoomAutoMatchingStatus {
+	waitEstimateSeconds Integer
+}
+
+/**
+ * Metadata of a Participant of a Room
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/rooms
+ */
+entity RoomParticipant {
+	autoMatched Boolean,
+	status String,
+	clientXmppAddress String,
+	connected Boolean,
+    leaveReason String,
+    capabilities String // list
+}
+
+/**
+ * Information about a player that has been anonymously auto-matched against the requesting player
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/rooms
+ */
+entity AnonymousPlayer {
+	displayName String,
+	avatarImageUrl String
+}
+
+/**
+ * Representation of a score
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/scores
+ */
+entity Score {
+	scoreValue Long,
+	timeSpan ScoreTimeSpan,
+    writeTime Long,
+    scoreTag String
+}
+
+/**
+ * Representation of a snapshot
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/snapshots
+ */
+entity Snapshot {
+	fileUrl String,
+	uniqueName String,
+	type String,
+	title String,
+	description String,
+	lastModifiedTime Long,
+	duration Long,
+	progressValue Long
+}
+
+/**
+ * Representation of a Turn-based Match
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/turnBasedMatches
+ */
+entity TurnBasedMatch {
+	variant Integer,
+	status TurnBasedMatchStatus,
+	userMatchStatus TurnBasedMatchUserMatchStatus,
+	creationParticipantId String,
+	creationModifiedTime ZonedDateTime,
+	lastUpdateParticipantId String,
+	lastUpdateModifiedTime ZonedDateTime,
+	matchVersion Integer,
+	matchNumber Integer
+}
+
+/**
+ * Criteria for auto-matching players into a Turn-based Match
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/turnBasedMatches
+ */
+entity TurnBasedMatchAutoMatchingCriteria {
+	minAutoMatchingPlayers Integer,
+    maxAutoMatchingPlayers Integer,
+    exclusiveBitmask Long
+}
+
+/**
+ * Metadata of a Participant of a Turn-based Match
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/turnBasedMatches
+ */
+entity TurnBasedMatchParticipant {
+	autoMatched Boolean,
+	status String,
+	clientXmppAddress String,
+	connected Boolean,
+    leaveReason String,
+    capabilities String // list
+}
+
+/**
+ * The data / game state of a Turn-based Match
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/turnBasedMatches
+ */
+entity TurnBasedMatchData {
+	dataAvailable Boolean,
+	data Blob
+}
+
+/**
+ * The result of the participant in a Turn-based Match
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/turnBasedMatches
+ */
+entity TurnBasedMatchResult {
+	result TurnBasedMatchResult,
+	placing Integer
+}
+
+/**
+ * Types of Achievement
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/achievementDefinitions
+ */
+enum AchievementType {
+    /** achievement is either locked or unlocked */
+    STANDARD, 
+    /** achievement is incremental */
+    INCREMENTAL
+}
+
+/**
+ * Possible states of an Achievement
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/achievements
+ */
+enum AchievementState {
+    HIDDEN, REVEALED, UNLOCKED
+}
+
+/**
+ * Visibility of an event
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/events
+ */
+enum EventVisibility {
+    /** should be visible to all users */
+    HIDDEN,
+    /** should only be shown to users that have recorded this event at least once */
+    REVEALED
+}
+
+/**
+ * Order of the scores
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/leaderboards
+ */
+enum LeaderboardOrder {
+    /** Larger values are better; scores are sorted in descending order */
+    LARGER_IS_BETTER,
+    /** Smaller values are better; scores are sorted in ascending order */
+    SMALLER_IS_BETTER
+}
+
+/**
+ * Types of APNS servers
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/pushtokens
+ */
+enum PushTokenEnvironmment {
+    PRODUCTION, SANDBOX
+}
+
+/**
+ * Possible states of a Quest
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/quests
+ */
+enum QuestState {
+	/** The quest is upcoming. The user can see the quest, but cannot accept it until it is open */
+	UPCOMING,
+	/** The quest is currently open and may be accepted at this time */
+	OPEN,
+	/** The user is currently participating in this quest */
+	ACCEPTED,
+	/** The user has completed the quest */
+	COMPLETED,
+	/** The quest was attempted but was not completed before the deadline expired */
+	FAILED,
+	/** The quest has expired and was not accepted */
+	EXPIRED,
+	/** The quest should be deleted from the local database */
+	DELETED
+}
+
+/**
+ * Possible states of a Milestone
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/quests
+ */
+enum MilestoneState {
+	/** The milestone is complete, but has not yet been claimed */
+	COMPLETED_NOT_CLAIMED,
+	/** The milestone is complete and has been claimed */
+	CLAIMED,
+	/** The milestone has not yet been completed */
+	NOT_COMPLETED,
+	/** The milestone is for a quest that has not yet been accepted */
+	NOT_STARTED
+}
+
+/**
+ * Possible reasons for a participant to leave a room
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/rooms
+ */
+enum RoomParticipantLeaveReason {
+	/** The player switched to another application and abandoned the room */
+	ABANDONED,
+	/** The game chose to remove the player from the room */
+	GAME_LEFT,
+	/** The client was unable to establish or maintain a connection to other peer(s) in the room */
+	PEER_CONNECTION_FAILURE,
+	/** The player explicitly chose to leave the room */
+	PLAYER_LEFT,
+	/** The client's XMPP connection ended abruptly */
+	PRESENCE_FAILURE,
+	/** The server was unable to establish or maintain a connection to the peer */
+	SERVER_CONNECTION_FAILURE,
+	/** The client received an error response when it tried to communicate with the server */
+	SERVER_ERROR,
+	/** The client timed out while waiting for players to join and connect */
+	TIMEOUT
+}
+
+/**
+ * Possible statuses of the participant with respect to the room
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/rooms
+ */
+enum RoomParticipantStatus {
+	/** The participant declined an invitation to join the room */
+	PARTICIPANT_DECLINED,
+	/** The participant has been invited to join the room, but has not yet responded */
+	PARTICIPANT_INVITED,
+	/** The participant has joined the room (either after creating it or accepting an invitation) */
+	PARTICIPANT_JOINED,
+	/** The participant joined the room and then left it */
+	PARTICIPANT_LEFT
+}
+
+/**
+ * Possible statuses of the room
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/rooms
+ */
+enum RoomStatus {
+	/** All players have joined and connected to each other */
+	ROOM_ACTIVE,
+	/** One or more slots need to be filled by auto-matching */
+	ROOM_AUTO_MATCHING,
+	/** Players have joined and are connecting to each other (either before or after auto-matching) */
+	ROOM_CONNECTING,
+	/** The room should no longer be shown on the client. Returned in sync calls when a player joins a room (as a tombstone), or for rooms where all joined participants have left */
+	ROOM_DELETED,
+	/** One or more players have been invited and not responded */
+	ROOM_INVITING
+}
+
+/**
+ * Possible timespans for scores
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/scores
+ */
+enum ScoreTimeSpan {
+	/** The score is an all-time score */
+	ALL_TIME,
+	/** The score is a daily score */
+	DAILY,
+	/** The score is a weekly score */
+	WEEKLY
+}
+
+/**
+ * The statuses of the participant with respect to the turn-based match
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/turnBasedMatches
+ */
+enum TurnBasedMatchParticipantStatus {
+	/** The participant declined an invitation to join the match */
+	PARTICIPANT_DECLINED,
+	/** The participant finished playing in the match */
+	PARTICIPANT_FINISHED,
+	/** The participant has been invited to join the match, but has not yet responded */
+	PARTICIPANT_INVITED,
+	/** The participant has joined the match (either after creating it or accepting an invitation) */
+	PARTICIPANT_JOINED,
+	/** The participant joined the match and then left it */
+	PARTICIPANT_LEFT,
+	/** The participant is slated to be invited to the match, but the invitation has not been sent; the invite will be sent when it becomes their turn */
+	PARTICIPANT_NOT_INVITED_YET,
+	/** The participant did not take their turn in the allotted time */
+	PARTICIPANT_UNRESPONSIVE
+}
+
+/**
+ * The statuses of the match
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/turnBasedMatches
+ */
+enum TurnBasedMatchStatus {
+	/** The match has started */
+	MATCH_ACTIVE,
+	/** One or more slots need to be filled by auto-matching; the match cannot be established until they are filled */
+	MATCH_AUTO_MATCHING,
+	/** The match was canceled */
+	MATCH_CANCELED,
+	/** The match has finished */
+	MATCH_COMPLETE,
+	/** The match should no longer be shown on the client. Returned only for tombstones for matches when sync is called */
+	MATCH_DELETED,
+	/** The match expired due to inactivity */
+	MATCH_EXPIRED
+}
+
+/**
+ * The statuses of the user in the match
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/turnBasedMatches
+ */
+enum TurnBasedMatchUserMatchStatus {
+	/** The user is waiting for their turn */
+	USER_AWAITING_TURN,
+	/** The user has been invited to join the match and has not responded yet */
+	USER_INVITED,
+	/** The match has ended (it is completed, canceled, or expired) */
+	USER_MATCH_COMPLETED,
+	/** The user has an action to take in the match */
+	USER_TURN
+}
+
+/**
+ * The result of the participant of a Turn-based Match
+ * 
+ * @author José Carlos Paiva
+ * @see https://developers.google.com/games/services/web/api/turnBasedMatches
+ */
+enum TurnBasedMatchResult {
+	/** Different clients reported different results for this participant */
+	MATCH_RESULT_DISAGREED,
+	/** The participant disconnected / left during the match */
+	MATCH_RESULT_DISCONNECT,
+	/** The participant lost the match */
+	MATCH_RESULT_LOSS,
+	/** There was no winner for the match (nobody wins or loses this kind of game) */
+	MATCH_RESULT_NONE,
+	/** The participant tied the match */
+	MATCH_RESULT_TIE,
+	/** The participant won the match */
+	MATCH_RESULT_WIN
+}
+
+relationship OneToOne {
+	ExperienceInfo{currentLevel} to Level,
+	ExperienceInfo{nextLevel} to Level,
+    Player{experienceInfo} to ExperienceInfo
+}
+
+// Set pagination options
+//paginate Player, Employee with infinite-scroll
+paginate Player with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl except ExperienceInfo, Level
+// Set an angular suffix
+angularSuffix * with mySuffix
